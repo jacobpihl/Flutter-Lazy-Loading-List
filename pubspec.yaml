@@ -1,6 +1,6 @@
 name: flutter_lazy_loader
 description: A lazily loaded list for flutter.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/jacobpihl/Flutter-Lazy-Loading-List
 
 environment:
