@@ -1,14 +1,10 @@
 A lazy loading list for use with Flutter.
 
-## Features
-
-Lazily loads items into a list!
-
 ## Getting started
-1. Depend on it.
-2. See example for how to use.
+1. Install package. See the [installation tab](https://pub.dev/packages/flutter_lazy_loader/install).
+2. Use it. See the [example tab](https://pub.dev/packages/flutter_lazy_loader/example).
 
-## Usage
+## Basic Usage
 
 ```
   LazyLoadingList<int>(
