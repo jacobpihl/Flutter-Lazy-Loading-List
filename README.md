@@ -2,7 +2,7 @@ A lazy loading list for use with Flutter.
 
 ## Features
 
-Loads items lazily into a list!
+Lazily loads items into a list!
 
 ## Getting started
 1. Depend on it.
@@ -10,4 +10,9 @@ Loads items lazily into a list!
 
 ## Usage
 
-Sample coming soon!
+```
+  LazyLoadingList<int>(
+      dataLoader: _dataloader,
+      listTile: _listTile,
+    )
+```
