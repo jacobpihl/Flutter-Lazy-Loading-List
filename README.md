@@ -6,7 +6,7 @@ Lazily loads items into a list!
 
 ## Getting started
 1. Depend on it.
-2. Use it!
+2. See example for how to use.
 
 ## Usage
 
