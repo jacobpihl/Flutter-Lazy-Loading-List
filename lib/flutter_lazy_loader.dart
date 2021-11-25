@@ -1,4 +1,4 @@
-library lazy_loading_list;
+library flutter_lazy_loader;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +7,8 @@ import 'package:flutter/widgets.dart';
 typedef GenericAsyncCallback<T> = Future<List<T>> Function();
 typedef WidgetFunction<T> = Widget Function(T data);
 
-class LazyLoadingList<T> extends StatefulWidget {
-  const LazyLoadingList({
+class FlutterLazyLoader<T> extends StatefulWidget {
+  const FlutterLazyLoader({
     Key? key,
     required this.dataLoader,
     required this.listTile,
@@ -18,10 +18,10 @@ class LazyLoadingList<T> extends StatefulWidget {
   final WidgetFunction<T> listTile;
 
   @override
-  _LazyLoadingListState<T> createState() => _LazyLoadingListState();
+  _FlutterLazyLoaderState<T> createState() => _FlutterLazyLoaderState();
 }
 
-class _LazyLoadingListState<T> extends State<LazyLoadingList<T>> {
+class _FlutterLazyLoaderState<T> extends State<FlutterLazyLoader<T>> {
   final List<T> _dataList = List.empty(growable: true);
   final Map<int, Widget> _listTileCache = {};
 

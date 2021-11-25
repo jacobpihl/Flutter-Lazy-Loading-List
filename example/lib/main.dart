@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lazy_loading_list/lazy_loading_list.dart';
+import 'package:flutter_lazy_loader/flutter_lazy_loader.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,21 +15,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LazyListExample(),
+      home: FlutterLazyLoaderExample(),
     );
   }
 }
 
-class LazyListExample extends StatefulWidget {
-  LazyListExample({Key? key}) : super(key: key);
+class FlutterLazyLoaderExample extends StatefulWidget {
+  FlutterLazyLoaderExample({Key? key}) : super(key: key);
 
   final List<int> list = List.generate(100, (index) => index);
 
   @override
-  State<LazyListExample> createState() => _LazyListExampleState();
+  State<FlutterLazyLoaderExample> createState() => _FlutterLazyLoaderExampleState();
 }
 
-class _LazyListExampleState extends State<LazyListExample> {
+class _FlutterLazyLoaderExampleState extends State<FlutterLazyLoaderExample> {
   int _lastIndex = 0;
 
   Future<List<int>> _dataloader() {
@@ -55,7 +55,7 @@ class _LazyListExampleState extends State<LazyListExample> {
         title: const Text("List example"),
       ),
       body: Center(
-        child: LazyLoadingList<int>(
+        child: FlutterLazyLoader<int>(
           dataLoader: _dataloader,
           listTile: _listTile,
         ),

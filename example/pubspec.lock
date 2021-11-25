@@ -62,6 +62,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_lazy_loader:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "1.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -74,13 +81,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  lazy_loading_list:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "1.0.0"
   lints:
     dependency: transitive
     description:
