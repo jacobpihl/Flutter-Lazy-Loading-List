@@ -4,15 +4,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-typedef GenericAsyncCallback<T> = Future<T> Function();
+typedef GenericAsyncCallback<T> = Future<List<T>> Function();
 typedef WidgetFunction<T> = Widget Function(T data);
 
 class LazyLoadingList<T> extends StatefulWidget {
-  const LazyLoadingList(
-      {Key? key, required this.dataLoader, required this.listTile})
-      : super(key: key);
+  const LazyLoadingList({
+    Key? key,
+    required this.dataLoader,
+    required this.listTile,
+  }) : super(key: key);
 
-  final GenericAsyncCallback<T?> dataLoader;
+  final GenericAsyncCallback<T> dataLoader;
   final WidgetFunction<T> listTile;
 
   @override
@@ -37,8 +39,8 @@ class _LazyLoadingListState<T> extends State<LazyLoadingList<T>> {
     widget.dataLoader().then((data) => _handleData(data));
   }
 
-  _handleData(T? data) {
-    if (data == null) {
+  _handleData(List<T> data) {
+    if (data.isEmpty) {
       setState(() {
         _isLoading = false;
         _hasMore = false;
@@ -46,7 +48,7 @@ class _LazyLoadingListState<T> extends State<LazyLoadingList<T>> {
     } else {
       setState(() {
         _isLoading = false;
-        _dataList.add(data);
+        _dataList.addAll(data);
       });
     }
   }
