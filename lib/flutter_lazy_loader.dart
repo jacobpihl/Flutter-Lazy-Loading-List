@@ -8,12 +8,12 @@ typedef _GenericAsyncCallback<T> = Future<List<T>> Function();
 typedef _WidgetFunction<T> = Widget Function(T data);
 
 /// Lazy loading list for flutter
-/// 
+///
 /// Takes a `dataLoader` and a `listTile` as parameters
-/// 
+///
 /// The `dataloader` is used for loading more data into the list.
 /// Should the `dataloader`-function return an empty list it is assumed that this is the end of the data and no more will be loaded.
-/// 
+///
 /// The `listTile` is the [Widget] that will be rendered for each data in the list
 class FlutterLazyLoader<T> extends StatefulWidget {
   const FlutterLazyLoader({
