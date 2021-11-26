@@ -26,17 +26,27 @@ class FlutterLazyLoaderExample extends StatefulWidget {
   final List<int> list = List.generate(100, (index) => index);
 
   @override
-  State<FlutterLazyLoaderExample> createState() => _FlutterLazyLoaderExampleState();
+  State<FlutterLazyLoaderExample> createState() =>
+      _FlutterLazyLoaderExampleState();
 }
 
 class _FlutterLazyLoaderExampleState extends State<FlutterLazyLoaderExample> {
   int _lastIndex = 0;
 
   Future<List<int>> _dataloader() {
-    var newListItems =
-        widget.list.getRange(_lastIndex, _lastIndex + 5).toList();
+    if (_lastIndex >= widget.list.length) {
+      // Returning empty list if we are out of data
+      return Future.value(List.empty());
+    }
+
+    var _nextIndex = _lastIndex + 5 < widget.list.length
+        ? _lastIndex + 5
+        : widget.list.length - 1;
+
+    var newListItems = widget.list.getRange(_lastIndex, _nextIndex).toList();
     _lastIndex += 5;
 
+    // Otherwise return the next batch of data
     return Future.delayed(const Duration(seconds: 1))
         .then((value) => newListItems);
   }
