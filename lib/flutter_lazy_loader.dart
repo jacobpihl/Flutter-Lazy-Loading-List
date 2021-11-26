@@ -4,9 +4,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-typedef GenericAsyncCallback<T> = Future<List<T>> Function();
-typedef WidgetFunction<T> = Widget Function(T data);
+typedef _GenericAsyncCallback<T> = Future<List<T>> Function();
+typedef _WidgetFunction<T> = Widget Function(T data);
 
+/// Lazy loading list for flutter
+/// 
+/// Takes a `dataLoader` and a `listTile` as parameters
+/// 
+/// The `dataloader` is used for loading more data into the list.
+/// Should the `dataloader`-function return an empty list it is assumed that this is the end of the data and no more will be loaded.
+/// 
+/// The `listTile` is the [Widget] that will be rendered for each data in the list
 class FlutterLazyLoader<T> extends StatefulWidget {
   const FlutterLazyLoader({
     Key? key,
@@ -14,8 +22,12 @@ class FlutterLazyLoader<T> extends StatefulWidget {
     required this.listTile,
   }) : super(key: key);
 
-  final GenericAsyncCallback<T> dataLoader;
-  final WidgetFunction<T> listTile;
+  /// Function responsible for loading more data to the list.
+  /// Return an empty list when there is no more data and the list will stop trying to request more.
+  final _GenericAsyncCallback<T> dataLoader;
+
+  /// Widget to be displayed for each rendered data in the list
+  final _WidgetFunction<T> listTile;
 
   @override
   _FlutterLazyLoaderState<T> createState() => _FlutterLazyLoaderState();
