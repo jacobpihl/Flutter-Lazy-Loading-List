@@ -6,3 +6,6 @@ Update readme
 
 ## 1.0.2
 Add more documentation
+
+## 1.0.3
+Minor formatting fixes
